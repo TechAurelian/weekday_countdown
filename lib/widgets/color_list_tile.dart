@@ -1,4 +1,4 @@
-// Copyright 2020 Appliberated. All rights reserved.
+// Copyright 2020-2022 TechAurelian. All rights reserved.
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
@@ -10,15 +10,13 @@ class ColorListTile extends StatelessWidget {
   ///
   /// The [color] and [title] parameters must not be null.
   const ColorListTile({
-    Key key,
-    @required this.color,
-    @required this.title,
+    super.key,
+    required this.color,
+    required this.title,
     this.enabled = true,
     this.selected = false,
     this.onTap,
-  })  : assert(color != null),
-        assert(title != null),
-        super(key: key);
+  });
 
   /// The ARGB color value to fill the circular color swatch.
   final Color color;
@@ -33,7 +31,7 @@ class ColorListTile extends StatelessWidget {
   final bool selected;
 
   /// Called when the user taps this list tile.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +56,8 @@ class _ColorFilledCircle extends StatelessWidget {
   /// Creates a circular widget filled with the specified [Color].
   ///
   /// The [color] parameter must not be null.
-  const _ColorFilledCircle({
-    Key key,
-    @required this.color,
-    this.diameter = 40.0,
-    this.border,
-  })  : assert(color != null),
-        super(key: key);
+  // ignore: unused_element
+  const _ColorFilledCircle({super.key, required this.color, this.diameter = 40.0, this.border});
 
   /// The color with which to fill the circle.
   final Color color;
@@ -73,7 +66,7 @@ class _ColorFilledCircle extends StatelessWidget {
   final double diameter;
 
   /// A border to draw above the background [color].
-  final BoxBorder border;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {

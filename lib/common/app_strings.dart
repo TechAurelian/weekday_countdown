@@ -1,5 +1,9 @@
-import 'package:weekday_countdown/screens/home.dart';
-import 'package:weekday_countdown/widgets/app_drawer.dart';
+// Copyright 2020-2022 TechAurelian. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be
+// found in the LICENSE file.
+
+import '../screens/home.dart';
+import '../widgets/app_drawer.dart';
 
 /// Application wide UI and URL string constants.
 class AppStrings {

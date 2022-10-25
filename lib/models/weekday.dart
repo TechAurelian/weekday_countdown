@@ -1,3 +1,7 @@
+// Copyright 2020-2022 TechAurelian. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be
+// found in the LICENSE file.
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +9,7 @@ enum Weekday { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
 
 class Weekdays {
   /// Returns the ARGB color value for the specified day.
-  static Color colorOf(Weekday day) => _weekdayColors[day];
+  static Color colorOf(Weekday day) => _weekdayColors[day]!;
 
   /// Returns the name of the specified day (e.g. "Monday").
   static String nameOf(Weekday day) {
@@ -24,7 +28,7 @@ class Weekdays {
     Weekday.sunday: Colors.red,
   };
 
-  static Duration countdownTo(int selectedWeekday) {
+  static Duration? countdownTo(int selectedWeekday) {
     DateTime now = DateTime.now();
     int currentWeekday = now.weekday;
 

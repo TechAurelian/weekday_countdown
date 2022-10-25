@@ -1,23 +1,23 @@
-// Copyright 2020 Appliberated. All rights reserved.
+// Copyright 2020-2022 TechAurelian. All rights reserved.
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:weekday_countdown/common/app_settings.dart';
-import 'package:weekday_countdown/common/app_strings.dart';
+
+import '../common/app_settings.dart';
+import '../common/app_strings.dart';
 
 class SettingsScreen extends StatefulWidget {
-  SettingsScreen({
-    Key key,
-    @required this.appSettings,
-  })  : assert(appSettings != null),
-        super(key: key);
+  const SettingsScreen({
+    super.key,
+    required this.appSettings,
+  });
 
   final AppSettings appSettings;
 
   @override
-  _SettingsScreenState createState() => _SettingsScreenState();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
@@ -25,11 +25,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.settingsTitle),
+        title: const Text(AppStrings.settingsTitle),
       ),
       body: ListView(
         children: [
-          ListTile(
+          const ListTile(
             title: Text(
               AppStrings.countdownFormatTitle,
 //              style: Theme.of(context).textTheme.headline6,
@@ -54,10 +54,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       leading: Radio<CountdownFormat>(
         value: format,
         groupValue: widget.appSettings.countdownFormat,
-        onChanged: (CountdownFormat value) {
-          setState(() {
-            widget.appSettings.countdownFormat = value;
-          });
+        onChanged: (CountdownFormat? value) {
+          if (value != null) {
+            setState(() {
+              widget.appSettings.countdownFormat = value;
+            });
+          }
         },
       ),
     );

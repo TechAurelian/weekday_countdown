@@ -1,22 +1,25 @@
-// Copyright 2020 Appliberated. All rights reserved.
+// Copyright 2020-2022 TechAurelian. All rights reserved.
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:weekday_countdown/common/app_settings.dart';
-import 'package:weekday_countdown/utils/utils.dart';
-import 'package:weekday_countdown/widgets/app_drawer.dart';
-import 'package:weekday_countdown/common/app_strings.dart';
-import 'package:weekday_countdown/models/weekday.dart';
-import 'package:weekday_countdown/widgets/countdown_display.dart';
-import 'package:weekday_countdown/screens/settings_screen.dart';
+
+import '../common/app_settings.dart';
+import '../common/app_strings.dart';
+import '../models/weekday.dart';
+import '../utils/utils.dart';
+import '../widgets/app_drawer.dart';
+import '../widgets/countdown_display.dart';
+import 'settings_screen.dart';
 
 /// Overflow menu items enumeration.
 enum MenuAction { share }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -73,11 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       case DrawerExtraActions.help:
         // Launch the app online help url
-        launchUrl(_scaffoldKey.currentState, AppStrings.helpURL);
+        launchUrlExternal(AppStrings.helpURL);
         break;
       case DrawerExtraActions.rate:
         // Launch the Google Play Store page to allow the user to rate the app
-        launchUrl(_scaffoldKey.currentState, AppStrings.rateAppURL);
+        launchUrlExternal(AppStrings.rateAppURL);
         break;
     }
   }
@@ -130,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .map(
           (item) => PopupMenuItem<MenuAction>(
             value: item,
-            child: Text(AppStrings.menuActions[item]),
+            child: Text(AppStrings.menuActions[item]!),
           ),
         )
         .toList();

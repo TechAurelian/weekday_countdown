@@ -1,33 +1,40 @@
-// Copyright 2020 anaurelian. All rights reserved.
+// Copyright 2020-2022 TechAurelian. All rights reserved.
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:weekday_countdown/screens/home.dart';
-import 'package:weekday_countdown/utils/utils.dart';
 
 import 'common/app_strings.dart';
+import 'screens/home.dart';
 
-void main() => runApp(WeekdayCountdownApp());
+void main() => runApp(const WeekdayCountdownApp());
 
 /// The app widget.
 class WeekdayCountdownApp extends StatelessWidget {
+  const WeekdayCountdownApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
       theme: ThemeData(
-        primarySwatch: Colors.white.createMaterialColor(),
-        buttonTheme: ButtonThemeData(
-          colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.black.createMaterialColor(),
-          ),
+        colorScheme: const ColorScheme.light(
+          primary: Colors.white,
+          onPrimary: Colors.black,
         ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        typography: Typography.material2018(),
       ),
-      home: HomeScreen(),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.white.createMaterialColor(),
+      //   buttonTheme: ButtonThemeData(
+      //     colorScheme: ColorScheme.fromSwatch(
+      //       primarySwatch: Colors.black.createMaterialColor(),
+      //     ),
+      //   ),
+      //   visualDensity: VisualDensity.adaptivePlatformDensity,
+      //   typography: Typography.material2018(),
+      // ),
+      home: const HomeScreen(),
     );
   }
 }
